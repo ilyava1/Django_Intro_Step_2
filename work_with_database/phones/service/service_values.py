@@ -1,0 +1,1 @@
+sorting_types = ['sort_by_name', 'cheap_first', 'exp_first']

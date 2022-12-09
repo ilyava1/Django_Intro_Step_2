@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог книг{% endblock %}
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        <div class="header">
+            <h1><a href="/books">Каталог</a></h1>
+        </div>
+        <div class="row">
+            {% for book, attribs in books.items %}
+            <div class="book col-md-4">
+                <h3 style="color:#009900">{{ book }}</h3>
+                <p>Автор: {{ attribs.author }}</p>
+                <p>Дата публикации: {{ attribs.pub_date }}</p>
+                <p> ----------------------------------- </p>
+                {% if pagi == True %}
+                    {% if previous_pub_date != None %}
+                    <p> <a href = '/books/{{previous_pub_date}}/'> < {{previous_pub_date}}  |</a>
+                    {% endif%}
+                    {% if next_pub_date != None %}
+                        <a href = '/books/{{next_pub_date}}/'>|  {{next_pub_date}} > </a>
+                    </p>
+                    {% endif%}
+                {% endif%}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
